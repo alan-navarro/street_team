@@ -49,10 +49,10 @@ layout = html.Div([
         is_RTL=False,  # True or False for direction of calendar
         clearable=True,  # whether or not the user can clear the dropdown
         number_of_months_shown=1,  # number of months shown when calendar is open
-        min_date_allowed=dt(2005, 1, 1),  # minimum date allowed on the DatePickerRange component
-        max_date_allowed=dt(2050, 1, 1),  # maximum date allowed on the DatePickerRange component
-        start_date=starting_date, # buscar como poner el dia de hoy para mostrar
-        end_date=current_date,
+        min_date_allowed=dt(1989, 1, 1),  # minimum date allowed on the DatePickerRange component
+        max_date_allowed=dt(2014, 1, 1),  # maximum date allowed on the DatePickerRange component
+        start_date="1990-01-01", # buscar como poner el dia de hoy para mostrar
+        end_date="1991-01-01",
         minimum_nights=0,  # minimum number of days between start and end date
 
         persistence=True,       # remember the date chosen

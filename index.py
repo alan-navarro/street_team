@@ -166,9 +166,9 @@ def toggle_sidebar(n, nclick):
 def render_page_content(pathname):
     if pathname == "/":
         return html.P("Choose the graph to check")
-    elif pathname == "/factors-correlation":
-        return choropleth_map.layout
     elif pathname == "/temperature-increase":
+        return choropleth_map.layout
+    elif pathname == "/factors-correlation":
         return heat_map.layout 
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(

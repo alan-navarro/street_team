@@ -98,7 +98,7 @@ CONTENT_STYLE1 = {
 
 sidebar = html.Div(
     [
-        html.H2("Chilliapps", className="display-4"),
+        html.H2("Dash app", className="display-4"),
         html.Hr(),
         html.P(
             "Stats", className="lead"

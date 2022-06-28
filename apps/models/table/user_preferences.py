@@ -1,10 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 # import psycopg2
-import os
+from apps.db.db_conn import DbConn
+
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["MANCHESTER"]
+conn = DbConn().get_connection()
+app.config['SQLALCHEMY_DATABASE_URI'] = conn
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

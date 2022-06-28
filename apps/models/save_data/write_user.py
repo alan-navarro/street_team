@@ -4,9 +4,10 @@ from datetime import datetime
 import datetime
 from sqlalchemy import create_engine
 import psycopg2
-import os
+from apps.db.db_conn import DbConn
 
-conn = os.environ["MANCHESTER"]
+conn = DbConn().get_connection()
+
 
 class WriteUser:
     def __init__(self):

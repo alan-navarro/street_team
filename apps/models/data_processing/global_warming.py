@@ -3,8 +3,9 @@ import pandas as pd
 import numpy as np
 from psycopg2 import connect, sql
 import os
+from apps.db.db_conn import DbConn
 
-conn = os.environ["MANCHESTER"]
+conn = DbConn().get_connection()
 
 class AnalizeFactors:
     def __init__(self):

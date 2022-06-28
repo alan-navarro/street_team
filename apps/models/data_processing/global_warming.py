@@ -1,20 +1,16 @@
 
-from apps.db.db_conn import DbConn
 import pandas as pd
 import numpy as np
 from psycopg2 import connect, sql
-import time
+import os
 
-
-bp = "\n"*3
+conn = os.environ["DATABASE_URL"]
 
 class AnalizeFactors:
     def __init__(self):
         print("initializing AnalizeFactors class")
 
     def get_data(self, start_date, end_date):
-        
-        conn = DbConn().get_connection()
         
         query_db = sql.SQL('''SELECT country, temperature, year, name, population, co2, electricprod, agriculture, forest, TO_CHAR(date, 'yyyy-mm-dd') as date
                             FROM preprocessed_data

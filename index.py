@@ -15,7 +15,7 @@ import dash_bootstrap_components as dbc
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output, State
-from apps import choropleth_map, heat_map
+from apps import choropleth_map, heat_map, survey
 import dash_auth
 from app import app, server
 import json
@@ -106,7 +106,9 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavLink("Factors correlation", href="/factors-correlation", active="exact"),
-                dbc.NavLink("Temperature increase", href="/temperature-increase", active="exact")
+                dbc.NavLink("Temperature increase", href="/temperature-increase", active="exact"),
+                dbc.NavLink("Survey", href="/survey", active="exact"),
+
             ],
             vertical=True,
             pills=True,
@@ -130,7 +132,6 @@ app.layout = html.Div(
         content,
     ],
 )
-
 
 @app.callback(
     [
@@ -170,6 +171,8 @@ def render_page_content(pathname):
         return choropleth_map.layout
     elif pathname == "/factors-correlation":
         return heat_map.layout 
+    elif pathname == "/survey":
+        return survey.layout 
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [

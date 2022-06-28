@@ -28,8 +28,10 @@ class WriteUser:
             legend_ = "Power production"
         elif selection_ == 4:
             legend_ = "Increase of agricultural land"
-        else:
+        elif selection_ == 5:
             legend_ = "Decrease of forest land"
+        else:
+            pass
         try:
             if user_name_ == '':
                 user_name_= None

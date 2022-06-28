@@ -35,7 +35,7 @@ class WriteUser:
                 user_name_= None
             else:
                 pass
-            commit_preferences = UserPreferences(user_name = user_name_, selection = selection_, legend = legend_,
+            commit_preferences = UserPreferences(user_name = user_name_, selection = 1, legend = legend_,
             created_at = datetime.datetime.now())
     
             session.add(commit_preferences)

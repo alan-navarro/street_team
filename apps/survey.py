@@ -16,7 +16,7 @@ html.Div(
     [
         html.I("Type your user name and press Enter, then vote!"),
         html.Br(),
-        dcc.Input(id="input_1", type="text", placeholder=None, debounce=True),
+        dcc.Input(id="input_1", type="text", placeholder=None, debounce=True, persistence=False),
         html.Br(),
         html.I("So far, what do you think is the factor that affects the most the climate?"),
         html.Br(),

@@ -16,7 +16,7 @@ html.Div(
     [
         html.I("Type your user name and press Enter, then vote!"),
         html.Br(),
-        dcc.Input(id="input_1", type="text", placeholder=None, debounce=True, persistence=False),
+        dcc.Input(id="input_1", type="text", placeholder=None, debounce=True, persistence=True),
         html.Br(),
         html.I("So far, what do you think is the factor that affects the most the climate?"),
         html.Br(),
@@ -29,6 +29,7 @@ html.Div(
                {'label': 'Decrease of forest land', 'value': 5},
            ],
            placeholder="Choose a factor...",
+           persistence=True
 ),
         html.Br(),
     ]

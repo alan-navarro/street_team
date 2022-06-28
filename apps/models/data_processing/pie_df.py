@@ -3,7 +3,7 @@ import pandas as pd
 from psycopg2 import connect, sql
 import os
 
-conn = os.environ["DATABASE_URL"]
+conn = os.environ["MANCHESTER"]
 
 
 class MakeDF:

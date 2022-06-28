@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 import psycopg2
 import os
 
-conn = os.environ["DATABASE_URL"]
+conn = os.environ["MANCHESTER"]
 
 class WriteUser:
     def __init__(self):

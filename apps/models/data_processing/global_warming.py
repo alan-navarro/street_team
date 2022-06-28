@@ -4,7 +4,7 @@ import numpy as np
 from psycopg2 import connect, sql
 import os
 
-conn = os.environ["DATABASE_URL"]
+conn = os.environ["MANCHESTER"]
 
 class AnalizeFactors:
     def __init__(self):
@@ -18,7 +18,7 @@ class AnalizeFactors:
                             BETWEEN '{start_date}' and '{end_date}'
                                     ''').format(start_date=sql.Identifier(start_date),end_date=sql.Identifier(end_date))
 
-        df_climate = pd.read_sql(query_db,conn)
+        df_climate = pd.read_sql(query_db, conn)
 
        # CO2 producers
         grouped_co2 = df_climate.groupby('country')['co2'].median().sort_values(ascending=False)

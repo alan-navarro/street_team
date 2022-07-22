@@ -1,5 +1,5 @@
-from user_preferences import UserPreferences
-# from pages.user_preferences import UserPreferences
+# from user_preferences import UserPreferences
+from pages.user_preferences import UserPreferences
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 import datetime

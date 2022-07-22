@@ -2,8 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 # import psycopg2
 import os
-from db_conn import DbConn
-# from pages.db_conn import DbConn
+# from db_conn import DbConn
+from pages.db_conn import DbConn
 
 app = Flask(__name__)
 connections = DbConn().get_connection()
@@ -33,6 +33,6 @@ def __repr__(self):
         return f'<User {self.name!r}>'
 
 
-if __name__ == "__main__":
-    db.create_all()
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     db.create_all()
+#     app.run(debug=True)

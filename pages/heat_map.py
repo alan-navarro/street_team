@@ -7,8 +7,8 @@ from dash import dash_table
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.express as px
-from pages.global_warming import AnalizeFactors
-# from global_warming import AnalizeFactors
+# from pages.global_warming import AnalizeFactors
+from global_warming import AnalizeFactors
 from dash import dash_table
 from dash.dash_table.Format import Format
 from dash.dash_table.Format import Group

@@ -12,8 +12,8 @@ import plotly.express as px
 from dash import dash_table
 from dash.dash_table.Format import Format
 from dash.dash_table.Format import Group
-from pages.global_warming import AnalizeFactors
-# from global_warming import AnalizeFactors
+# from pages.global_warming import AnalizeFactors
+from global_warming import AnalizeFactors
 
 dash.register_page(__name__)
 

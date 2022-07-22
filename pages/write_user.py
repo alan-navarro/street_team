@@ -1,14 +1,16 @@
-from apps.models.table.user_preferences import UserPreferences
+from pages.user_preferences import UserPreferences
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 import datetime
 from sqlalchemy import create_engine
 import psycopg2
-# from apps.db.db_conn import DbConn
 import os
+from pages.db_conn import DbConn
+bp = "\n"*3
 
-conn = os.environ["MANCHESTER"]
-
+# conn = os.environ["DATABASE_URL"]
+connections = DbConn().get_connection()
+conn = connections["table_conn"]
 
 class WriteUser:
     def __init__(self):
@@ -28,16 +30,14 @@ class WriteUser:
             legend_ = "Power production"
         elif selection_ == 4:
             legend_ = "Increase of agricultural land"
-        elif selection_ == 5:
-            legend_ = "Decrease of forest land"
         else:
-            pass
+            legend_ = "Decrease of forest land"
         try:
             if user_name_ == '':
                 user_name_= None
             else:
                 pass
-            commit_preferences = UserPreferences(user_name = user_name_, selection = 1, legend = legend_,
+            commit_preferences = UserPreferences(user_name = user_name_, selection = selection_, legend = legend_,
             created_at = datetime.datetime.now())
     
             session.add(commit_preferences)

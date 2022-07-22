@@ -1,23 +1,23 @@
 import pandas as pd
-import numpy as np
 import dash
-from dash import html 
-from dash import dcc 
+from dash import Dash, dcc, html, Input, Output, callback
 from datetime import datetime as dt 
 from datetime import date
-from dash.dependencies import Input, Output
 import datetime
 from dateutil.relativedelta import relativedelta
 from dash import dash_table
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.express as px
-from apps.models.data_processing.global_warming import AnalizeFactors
 from dash import dash_table
 from dash.dash_table.Format import Format
 from dash.dash_table.Format import Group
-from app import app
+from pages.global_warming import AnalizeFactors
 
+dash.register_page(__name__)
+
+# from app import app
+# import random
 bp = "\n"*3
 
 empty_data = {
@@ -36,6 +36,9 @@ empty_df = pd.DataFrame(empty_data)
 past_month = relativedelta(months=1)
 current_date = datetime.date.today()
 starting_date = current_date - past_month
+
+app = dash.Dash(suppress_callback_exceptions=True)
+
 
 layout = html.Div([
     dcc.DatePickerRange(
@@ -85,12 +88,12 @@ layout = html.Div([
     ]) 
 
 
-@app.callback(
-    dash.dependencies.Output('choropleth_map', 'figure'),
-    dash.dependencies.Output("top20_table", "data"),
-    dash.dependencies.Output("top20_table", "columns"),
-    [dash.dependencies.Input('global-date-picker', 'start_date'),
-    dash.dependencies.Input('global-date-picker', 'end_date')])
+@callback(
+    Output('choropleth_map', 'figure'),
+    Output("top20_table", "data"),
+    Output("top20_table", "columns"),
+    Input('global-date-picker', 'start_date'),
+    Input('global-date-picker', 'end_date'))
 
 def create_map(start_date, end_date):
     Analize_Factors = AnalizeFactors().get_data(start_date, end_date)
@@ -114,3 +117,6 @@ def create_map(start_date, end_date):
 
 
     return choropleth_map, data_table, columns_table
+
+# if __name__ == '__main__':
+#     app.run_server(debug=True)

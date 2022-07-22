@@ -1,15 +1,18 @@
 
+from pages.db_conn import DbConn
 import pandas as pd
 from psycopg2 import connect, sql
-from apps.db.db_conn import DbConn
 
-conn = DbConn().get_connection()
+bp = "\n"*3
 
 class MakeDF:
     def __init__(self):
         print("make dataframe")
 
     def making_df(self):
+        
+        connections = DbConn().get_connection()
+        conn = connections["conn"]
         
         query_preferences = sql.SQL('''SELECT * 
                                      FROM user_preferences''')

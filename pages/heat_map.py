@@ -1,16 +1,20 @@
 import pandas as pd
 import dash
-from dash import html 
-from dash import dcc 
-from datetime import datetime as dt 
-from datetime import date
-from dash.dependencies import Input, Output
+from dash import Dash, dcc, html, Input, Output, callback
 import datetime
 from dateutil.relativedelta import relativedelta
+from dash import dash_table
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 import plotly.express as px
-from apps.models.data_processing.global_warming import AnalizeFactors
-from app import app
+from pages.global_warming import AnalizeFactors
+from dash import dash_table
+from dash.dash_table.Format import Format
+from dash.dash_table.Format import Group
+dash.register_page(__name__)
 
+# from app import app
+# import random
 bp = "\n"*3
 
 empty_data = {
@@ -29,6 +33,9 @@ empty_df = pd.DataFrame(empty_data)
 past_month = relativedelta(months=1)
 current_date = datetime.date.today()
 starting_date = current_date - past_month
+
+app = dash.Dash(suppress_callback_exceptions=True)
+
 
 layout = html.Div([
     html.Div([html.H1('Factors correlation map', style={"textAlign": "center", "color": "#007F94", 'fontWeight': 'bold'}),
@@ -49,9 +56,9 @@ layout = html.Div([
     ]) 
 
 
-@app.callback(
-    dash.dependencies.Output('heat_map', 'figure'),
-    [dash.dependencies.Input('year-dropdown', 'value'),])
+@callback(
+       Output('heat_map', 'figure'), 
+       Input('year-dropdown', 'value'))
 
 def create_heatmap(selected_year):
     start_date = str(selected_year) + '-01-01'
@@ -66,3 +73,6 @@ def create_heatmap(selected_year):
     y=['Temperature', 'Population', 'CO2 (kt)', 'KWh use per capita', 'Agricultural land (km2)', 'Forest land (km2)'],)
 
     return heatmap
+
+# if __name__ == '__main__':
+#     app.run_server(debug=True)

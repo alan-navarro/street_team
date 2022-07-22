@@ -1,12 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 # import psycopg2
-# from apps.db.db_conn import DbConn
 import os
+from pages.db_conn import DbConn
 
 app = Flask(__name__)
-# conn = DbConn().get_connection()
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["MANCHESTER"]
+connections = DbConn().get_connection()
+app.config['SQLALCHEMY_DATABASE_URI'] = connections["table_conn"]
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -17,8 +17,8 @@ class UserPreferences(db.Model):
 
    id = db.Column(db.Integer, primary_key = True, nullable=False)
    user_name = db.Column(db.String(100), nullable=False)
-   selection = db.Column(db.Integer(), nullable=False)
-   legend = db.Column(db.String(100), nullable=False)
+   selection = db.Column(db.Integer())
+   legend = db.Column(db.String(100))
    created_at = db.Column(db.DateTime)
 
 def __init__(self, id, user_name, selection, legend, created_at):

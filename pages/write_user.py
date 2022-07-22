@@ -1,11 +1,13 @@
-from pages.user_preferences import UserPreferences
+from user_preferences import UserPreferences
+# from pages.user_preferences import UserPreferences
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 import datetime
 from sqlalchemy import create_engine
 import psycopg2
 import os
-from pages.db_conn import DbConn
+from db_conn import DbConn
+# from pages.db_conn import DbConn
 bp = "\n"*3
 
 # conn = os.environ["DATABASE_URL"]

@@ -8,8 +8,10 @@ import datetime
 from dateutil.relativedelta import relativedelta
 import plotly.graph_objects as go
 import plotly.express as px
-from pages.write_user import WriteUser
-from pages.pie_df import MakeDF
+# from pages.write_user import WriteUser
+# from pages.pie_df import MakeDF
+from write_user import WriteUser
+from pie_df import MakeDF
 
 dash.register_page(__name__)
 

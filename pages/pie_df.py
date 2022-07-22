@@ -1,5 +1,6 @@
 
-from pages.db_conn import DbConn
+# from pages.db_conn import DbConn
+from db_conn import DbConn
 import pandas as pd
 from psycopg2 import connect, sql
 

@@ -38,7 +38,7 @@ past_month = relativedelta(months=1)
 current_date = datetime.date.today()
 starting_date = current_date - past_month
 
-app = dash.Dash(suppress_callback_exceptions=True)
+# app = dash.Dash(suppress_callback_exceptions=True)
 
 
 layout = html.Div([

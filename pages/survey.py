@@ -17,7 +17,7 @@ dash.register_page(__name__)
 
 bp = "\n"*3
 
-app = dash.Dash(suppress_callback_exceptions=True)
+# app = dash.Dash(suppress_callback_exceptions=True)
 
 layout = html.Div([
 html.Div(

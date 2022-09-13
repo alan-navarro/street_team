@@ -6,9 +6,8 @@ from app_framework.db_connection.db_conn import DbConn
 
 app = Flask(__name__)
 connections = DbConn().get_connection()
-# app.config['SQLALCHEMY_DATABASE_URI'] = connections["table_conn"]
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app.config['SQLALCHEMY_DATABASE_URI'] = connections["table_conn"]
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class UserPreferences(db.Model):

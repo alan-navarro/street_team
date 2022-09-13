@@ -5,9 +5,9 @@ import flask
 server = flask.Flask(__name__)
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP], server=server,use_pages=True)
 # app = dash.Dash(__name__, use_pages=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config["SESSION_PERMANENT"] = False
+# app.config["SESSION_TYPE"] = "filesystem"
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 

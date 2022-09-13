@@ -17,9 +17,6 @@ class UsersSurvey:
         sql_query = pd.read_sql(query_preferences, conn)
 
         print(sql_query)
-        # with self.async_engine.connect() as con:
-        #     query = "SELECT * FROM user_preferences;"
-        #     result = con.execute(text(query))
 
         return sql_query
 

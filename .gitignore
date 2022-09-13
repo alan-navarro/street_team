@@ -1,5 +1,2 @@
 env
-sources
-local
-db
-db_conn.py
+.env

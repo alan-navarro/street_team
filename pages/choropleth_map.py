@@ -2,23 +2,17 @@ import pandas as pd
 import dash
 from dash import Dash, dcc, html, Input, Output, callback
 from datetime import datetime as dt 
-from datetime import date
 import datetime
 from dateutil.relativedelta import relativedelta
 from dash import dash_table
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 import plotly.express as px
 from dash import dash_table
 from dash.dash_table.Format import Format
-from dash.dash_table.Format import Group
-# from pages.global_warming import AnalizeFactors
-from global_warming import AnalizeFactors
+# from dash.dash_table.Format import Group
+from app_framework.models.climate_data_set import ClimateDataSet
 
 dash.register_page(__name__)
 
-# from app import app
-# import random
 bp = "\n"*3
 
 empty_data = {
@@ -97,9 +91,9 @@ layout = html.Div([
     Input('global-date-picker', 'end_date'))
 
 def create_map(start_date, end_date):
-    Analize_Factors = AnalizeFactors().get_data(start_date, end_date)
+    climate_dataset = ClimateDataSet().get_data(start_date, end_date)
 
-    first_20_T =Analize_Factors["first_20_T"].reset_index()
+    first_20_T =climate_dataset["first_20_T"].reset_index()
     first_20_T_mean = first_20_T["temperature"].mean()
 
     choropleth_map = px.choropleth(first_20_T, locations="name", color="temperature",
@@ -118,6 +112,3 @@ def create_map(start_date, end_date):
 
 
     return choropleth_map, data_table, columns_table
-
-# if __name__ == '__main__':
-#     app.run_server(debug=True)

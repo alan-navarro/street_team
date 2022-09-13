@@ -1,6 +1,9 @@
 import dash
 import dash_bootstrap_components as dbc
-from app import app
+import flask
+
+server = flask.Flask(__name__)
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP], server=server,use_pages=True)
 # app = dash.Dash(__name__, use_pages=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 navbar = dbc.NavbarSimple(
@@ -24,5 +27,5 @@ app.layout = dbc.Container(
     fluid=True,
 )
 
-# if __name__ == "__main__":
-#     app.run_server(debug=True)
+if __name__ == "__main__":
+    app.run_server(debug=True)

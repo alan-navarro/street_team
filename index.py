@@ -11,8 +11,8 @@ app.config.suppress_callback_exceptions = True
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config["SESSION_TYPE"] = "filesystem"
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 navbar = dbc.NavbarSimple(

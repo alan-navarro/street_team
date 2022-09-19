@@ -5,6 +5,7 @@ import flask
 server = flask.Flask(__name__)
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP], server=server,use_pages=True)
 app.config.suppress_callback_exceptions = True
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["DATABASE_URL"]
 
 # app = dash.Dash(__name__, use_pages=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 # app.config["SESSION_PERMANENT"] = False

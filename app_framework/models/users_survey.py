@@ -1,6 +1,7 @@
 
 import pandas as pd
 from psycopg2 import connect, sql
+from sqlalchemy import text
 import os
 
 conn = os.environ["TABLE_CONN"]
@@ -14,10 +15,11 @@ class UsersSurvey:
         query_preferences = sql.SQL('''SELECT * 
                                      FROM user_preferences''')
         
-        sql_query = pd.read_sql(query_preferences, conn)
+        # sql_query = pd.read_sql(query_preferences, conn)
+        result = await conn.execute(text(query_preferences))
 
-        print(sql_query)
+        print(result)
 
-        return sql_query
+        return result
 
 
